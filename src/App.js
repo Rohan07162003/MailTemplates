@@ -11,6 +11,7 @@ import FeaturedService from './Components/FeaturedService.jsx';
 import NewService from './Components/NewService.jsx';
 import WeeklyNewsletter from './Components/WeeklyNewsletter.jsx';
 import Search from './Components/Search.jsx';
+import Categories from './Components/Categories.jsx';
 
 import { useEffect, useState, useRef } from "react";
 function App() {
@@ -21,6 +22,7 @@ function App() {
   const [Invitationsopen, setInvitationsopen] = useState(true);
   const [Educateopen, setEducateopen] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  const [categorie, setCategorie] = useState(['Announcements', 'Ocassions', 'Invitations', 'Educate']);
   const components = [
     { name: 'EditorialNewspaper', component: <EditorialNewspaper />, date: "2023-10-15", },
     { name: 'FeaturedService', component: <FeaturedService />, date: "2023-09-25", },
@@ -73,17 +75,24 @@ function App() {
           <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           <Dropdown sort={sort} setSort={setSort} isOpen={isOpen} setIsOpen={setIsOpen} menuRef={menuRef} />
         </div>
-        <div className='md:w-3/4 lg:w-2/3'>
-          <div className="grid gap-x-2 gap-y-4 grid-cols-2 lg:grid-cols-3 mt-12 lg:mr-16">
-            {searchQuery !== '' && filteredComponents.map((component, index) => (
-              <div key={index}>
-                {component.component}
-              </div>
-            ))}
+        <div>
+          <div className="grid mt-2 gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+            <Categories selected={categorie} onChange={setCategorie} />
           </div>
-
         </div>
-        <div className='md:w-3/4 lg:w-2/3 grid gap-x-2 gap-y-4 grid-cols-2 lg:grid-cols-3 mt-4 pt-6 lg:mr-16'>
+        {searchQuery !== '' && (
+          <div className='md:w-3/4 lg:w-2/3'>
+            <div className="grid gap-x-2 gap-y-4 grid-cols-2 lg:grid-cols-3 mt-12 lg:mr-16">
+              {filteredComponents.map((component, index) => (
+                <div key={index}>
+                  {component.component}
+                </div>
+              ))}
+            </div>
+
+          </div>
+        )}
+        <div className='md:w-3/4 lg:w-2/3 grid gap-x-2 gap-y-4 grid-cols-2 lg:grid-cols-3 mt-8 pt-12 lg:mr-16'>
           {sort === "A-Z" && (
             Array.from(sortedComponents.entries()).map(([componentName, Componentinfo], index) => (
               <div key={index} className=''>
@@ -95,7 +104,7 @@ function App() {
             ))
           )}
         </div>
-        <div className='md:w-3/4 lg:w-2/3 grid gap-x-2 gap-y-4 grid-cols-2 lg:grid-cols-3 mt-4 pt-6 lg:mr-16'>
+        <div className='md:w-3/4 lg:w-2/3 grid gap-x-2 gap-y-4 grid-cols-2 lg:grid-cols-3 lg:mr-16'>
           {sort === "Recent" && (
             Array.from(sortedComponentbydate.entries()).map(([componentName, Componentinfo], index) => (
               <div key={index} className=''>
@@ -110,38 +119,17 @@ function App() {
         {sort === "Categories" && (
           Array.from(sortedComponentMap.entries()).map(([componentName, Componentinfo], index) => (
             <div key={index}>
-              <Componentinfo.Component />
+              {categorie.includes(componentName) && <Componentinfo.Component />}
             </div>
           ))
         )}
         {sort === "Popular" && (
           Array.from(sortbyuseComponentMap.entries()).map(([componentName, Componentinfo], index) => (
             <div key={index}>
-              <Componentinfo.Component />
+              {categorie.includes(componentName) && <Componentinfo.Component />}
             </div>
           ))
         )}
-
-
-        <div className="flex flex-col justify-center w-48">
-          <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-            <input type="checkbox" name="Announcements" onChange={() => { setAnnouncementsopen(!Announcementsopen) }} />
-            <span>Announcements</span>
-          </label>
-          <label className="border px-4 py-3 flex rounded-2xl gap-2 items-center cursor-pointer">
-            <input type="checkbox" name="Invitations" onChange={() => { setInvitationsopen(!Invitationsopen) }} />
-            <span>Invitations</span>
-          </label>
-          <label className="border px-4 py-3 flex rounded-2xl gap-2 items-center cursor-pointer">
-            <input type="checkbox" name="Ocassions" onChange={() => { setOccasionsopen(!Ocassionsopen) }} />
-            <span>Occasions</span>
-          </label>
-          <label className="border px-4 py-3 flex rounded-2xl gap-2 items-center cursor-pointer">
-            <input type="checkbox" name="Educate" onChange={() => { setEducateopen(!Educateopen) }} />
-            <span>Educate</span>
-          </label>
-        </div>
-
       </div>
 
     </div >

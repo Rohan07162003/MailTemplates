@@ -4,7 +4,7 @@ export default function Search({searchQuery,setSearchQuery}) {
             <input
                 type="text"
                 className="bg-white border border-gray-700 rounded-full pl-10 pr-4 py-2"
-                placeholder="Search components"
+                placeholder="Search Templates"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
 
