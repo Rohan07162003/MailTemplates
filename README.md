@@ -1,12 +1,17 @@
+Some screenshots of the project - 
+![fullscreen](https://github.com/Rohan07162003/MailTemplates/assets/116675069/64a5aeda-e1c5-47c9-96dd-ef3763795528)
+
+![medium](https://github.com/Rohan07162003/MailTemplates/assets/116675069/e5577429-8bf5-4e91-b44c-06e23fe25cf0)
+
+![mobile](https://github.com/Rohan07162003/MailTemplates/assets/116675069/7acf83a1-fc93-40c5-9872-156d36327d45)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
+## To Run the App use `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
