@@ -23,6 +23,7 @@ export default function Dropdown({ sort, setSort,isOpen,setIsOpen,menuRef }) {
 
                 {isOpen && (
                     <div className="flex flex-col justify-between absolute top-12 right-13 z-10 bg-white divide-y divide-gray-100 rounded-xl drop-shadow-md shadow w-40 dark:bg-gray-700 dark:divide-gray-600">
+                        <button value="Categories" onClick={(ev) => { setSort(ev.target.value) }} className="flex block px-4 py-1 hover:bg-gray-100 hover:rounded-xl">Categories</button>
                         <button value="Popular" onClick={(ev) => { setSort(ev.target.value) }} className="flex block px-4 py-1 hover:bg-gray-100 hover:rounded-xl">Popular</button>
                         <button value="A-Z" onClick={(ev) => { setSort(ev.target.value) }} className="flex block px-4 py-1 hover:bg-gray-100 hover:rounded-xl">A-Z</button>
                         <button value="Recent" onClick={(ev) => { setSort(ev.target.value) }} className="flex block px-4 py-1 hover:bg-gray-100 hover:rounded-xl">Recent</button>

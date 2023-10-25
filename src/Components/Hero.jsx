@@ -14,7 +14,7 @@ export default function Hero() {
 
                     </div>
 
-                    <h2 className='text-4xl lg:text-5xl font-poppins text-black'>by the community, for the community.</h2>
+                    <h2 className='text-3xl lg:text-5xl font-poppins text-black'>by the community, for the community.</h2>
                     <p className='pt-4 text-gray-700'>100s of free templates to help you craft the perfect marketing journey.</p>
                 </div>
             </div>
